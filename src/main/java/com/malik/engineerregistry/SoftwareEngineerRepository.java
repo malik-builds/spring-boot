@@ -1,7 +1,6 @@
-package com.amigoscode.spring_boot;
+package com.malik.engineerregistry;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SoftwareEngineerRepository extends JpaRepository<SoftwareEngineer, Integer> {
-
 }

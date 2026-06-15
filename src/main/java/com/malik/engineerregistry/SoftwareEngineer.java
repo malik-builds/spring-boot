@@ -1,11 +1,10 @@
-package com.amigoscode.spring_boot;
+package com.malik.engineerregistry;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,13 +15,10 @@ public class SoftwareEngineer {
     private String name;
     private String techStack;
 
-
-    public SoftwareEngineer(){
-
+    public SoftwareEngineer() {
     }
 
     public SoftwareEngineer(Integer id, String name, String techStack) {
-
         this.id = id;
         this.name = name;
         this.techStack = techStack;
@@ -63,6 +59,4 @@ public class SoftwareEngineer {
     public int hashCode() {
         return Objects.hash(id, name, techStack);
     }
-
-
 }

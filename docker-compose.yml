@@ -1,10 +1,11 @@
 services:
   db:
-    container_name: postgres-spring-boot
+    container_name: postgres-engineer-registry
     image: postgres:latest
     environment:
-      POSTGRES_USER: amigoscode
+      POSTGRES_USER: malik
       POSTGRES_PASSWORD: password
+      POSTGRES_DB: engineer_registry
       PGDATA: /data/postgres
     volumes:
       - db:/data/postgres

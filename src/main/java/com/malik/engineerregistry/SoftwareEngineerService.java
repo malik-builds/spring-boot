@@ -1,0 +1,40 @@
+package com.malik.engineerregistry;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class SoftwareEngineerService {
+
+    private final SoftwareEngineerRepository softwareEngineerRepository;
+
+    public SoftwareEngineerService(SoftwareEngineerRepository softwareEngineerRepository) {
+        this.softwareEngineerRepository = softwareEngineerRepository;
+    }
+
+    public List<SoftwareEngineer> getSoftwareEngineers() {
+        return softwareEngineerRepository.findAll();
+    }
+
+    public void insertSoftwareEngineer(SoftwareEngineer softwareEngineer) {
+        softwareEngineerRepository.save(softwareEngineer);
+    }
+
+    public SoftwareEngineer getSoftwareEngineerById(Integer id) {
+        return softwareEngineerRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Engineer with id " + id + " not found"));
+    }
+
+    public void deleteSoftwareEngineerById(Integer id) {
+        softwareEngineerRepository.deleteById(id);
+    }
+
+    public void updateSoftwareEngineerById(Integer id, SoftwareEngineer softwareEngineer) {
+        SoftwareEngineer existing = softwareEngineerRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("Engineer with id " + id + " not found"));
+        existing.setName(softwareEngineer.getName());
+        existing.setTechStack(softwareEngineer.getTechStack());
+        softwareEngineerRepository.save(existing);
+    }
+}
