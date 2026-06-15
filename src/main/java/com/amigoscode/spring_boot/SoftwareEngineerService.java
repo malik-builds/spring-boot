@@ -1,5 +1,6 @@
 package com.amigoscode.spring_boot;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,5 +27,11 @@ public class SoftwareEngineerService {
 
     public void deleteSoftwareEngineerById(Integer id) {
         softwareEngineerRepository.deleteById(id);
+    }
+    public void updateSoftwareEngineerById(Integer id, SoftwareEngineer softwareEngineer){
+        SoftwareEngineer old = softwareEngineerRepository.findById(id).orElseThrow(()-> new IllegalStateException(id + " not found"));
+        old.setName(softwareEngineer.getName());
+        old.setTechStack(softwareEngineer.getTechStack());
+        softwareEngineerRepository.save(old);
     }
 }
